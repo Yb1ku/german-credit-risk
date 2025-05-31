@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#dataset-overview" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -296,6 +301,19 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Dataset overview
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -307,6 +325,41 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      📇 DATASET OVERVIEW
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      FEATURES
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -611,6 +664,32 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      📇 DATASET OVERVIEW
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      FEATURES
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -627,7 +706,136 @@
 
   <h1>Dataset overview</h1>
 
-
+<h2 id="dataset-overview">📇 DATASET OVERVIEW<a class="headerlink" href="#dataset-overview" title="Permanent link">&para;</a></h2>
+<p>The data used in this project is the 
+<a href="https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data">German Credit Data</a> 
+dataset, which contains information about credit applicants and their credit risk 
+classification. The dataset consists of 1000 samples. There are 2 variations of the 
+dataset: </p>
+<ul>
+<li><strong>German Data</strong>: Contains both categorical and numerical features. </li>
+<li><strong>German Data Numeric</strong>: Categorical features are encoded as numerical values. 
+Suitable for models that require numerical inputs. </li>
+</ul>
+<p>This project uses the original <strong>German Data</strong> with categorical features. </p>
+<h2 id="features">FEATURES<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
+<p>The dataset contains 20 features and a target variable. The features are a mix of 
+categorical and numerical variables: </p>
+<table>
+<thead>
+<tr>
+<th>Feature Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Checking_account_status</td>
+<td>Categorical</td>
+<td>Status of existing checking account</td>
+</tr>
+<tr>
+<td>Duration_months</td>
+<td>Numerical</td>
+<td>Duration in months</td>
+</tr>
+<tr>
+<td>Credit_history</td>
+<td>Categorical</td>
+<td>Credit history of the applicant</td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>Categorical</td>
+<td>Purpose of the credit</td>
+</tr>
+<tr>
+<td>Credit_amount</td>
+<td>Numerical</td>
+<td>Amount of credit</td>
+</tr>
+<tr>
+<td>Savings_account_bonds</td>
+<td>Categorical</td>
+<td>Savings account or bonds</td>
+</tr>
+<tr>
+<td>Employment_since</td>
+<td>Categorical</td>
+<td>Present employment duration</td>
+</tr>
+<tr>
+<td>Installment_rate</td>
+<td>Numerical</td>
+<td>Installment rate in % of disposable income</td>
+</tr>
+<tr>
+<td>Personal_status_sex</td>
+<td>Categorical</td>
+<td>Personal status and sex</td>
+</tr>
+<tr>
+<td>Other_debtors_guarantors</td>
+<td>Categorical</td>
+<td>Other debtors or guarantors</td>
+</tr>
+<tr>
+<td>Residence_since</td>
+<td>Numerical</td>
+<td>Present residence duration in years</td>
+</tr>
+<tr>
+<td>Property</td>
+<td>Categorical</td>
+<td>Type of property</td>
+</tr>
+<tr>
+<td>Age_years</td>
+<td>Numerical</td>
+<td>Age of the applicant</td>
+</tr>
+<tr>
+<td>Other_installment_plans</td>
+<td>Categorical</td>
+<td>Other installment plans (e.g. bank, stores)</td>
+</tr>
+<tr>
+<td>Housing</td>
+<td>Categorical</td>
+<td>Type of housing</td>
+</tr>
+<tr>
+<td>Existing_credits</td>
+<td>Numerical</td>
+<td>Number of existing credits at this bank</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>Categorical</td>
+<td>Job category</td>
+</tr>
+<tr>
+<td>Maintenance_people</td>
+<td>Numerical</td>
+<td>Number of people liable for maintenance</td>
+</tr>
+<tr>
+<td>Telephone</td>
+<td>Categorical</td>
+<td>Presence of telephone (registered under the customer's name or not)</td>
+</tr>
+<tr>
+<td>Foreign_worker</td>
+<td>Categorical</td>
+<td>Whether the applicant is a foreign worker</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>The next step is to perform exploratory data analysis (EDA) to understand the 
+underlying patterns and relationships in the data. This will help in feature 
+selection and model building stages. </p>
 
 
 
