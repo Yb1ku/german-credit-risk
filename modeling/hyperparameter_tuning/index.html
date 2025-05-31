@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#hyperparameter-tuning" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -410,6 +415,19 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Hyperparameter Tuning
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -421,6 +439,32 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hyperparameter-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      HYPERPARAMETER TUNING
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -611,6 +655,23 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hyperparameter-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      HYPERPARAMETER TUNING
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -627,7 +688,97 @@
 
   <h1>Hyperparameter Tuning</h1>
 
+<h2 id="hyperparameter-tuning">HYPERPARAMETER TUNING<a class="headerlink" href="#hyperparameter-tuning" title="Permanent link">&para;</a></h2>
+<p>The previous section introduced a baseline model with default hyperparameters. Now, 
+the goal is to improve the model's performance by tuning its hyperparameters. This 
+process has been carried out using a simple grid search strategy. It may not be the 
+most complex or exhaustive method, but it is a good starting point for hyperparameter
+tuning. If the model's performance is still not satisfactory, more advanced techniques
+can be applied. </p>
+<p>The hyperparameter search has been performed as follows: </p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_scorer</span><span class="p">,</span> <span class="n">f1_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xgb</span>
 
+<span class="n">base_model</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span>
+    <span class="n">objective</span><span class="o">=</span><span class="s2">&quot;binary:logistic&quot;</span><span class="p">,</span>
+    <span class="n">eval_metric</span><span class="o">=</span><span class="s2">&quot;logloss&quot;</span><span class="p">,</span>
+    <span class="n">enable_categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span>
+    <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+    <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="s2">&quot;colsample_bytree&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">base_model</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">),</span>
+    <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The optimal hyperparameters found are: </p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="s1">&#39;colsample_bytree&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> 
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> 
+    <span class="s1">&#39;subsample&#39;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The model achieved the following performance metrics, averaged over the 5-fold 
+cross-validation process: </p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Accuracy</strong></td>
+<td>0.8461</td>
+<td>+0.0921</td>
+</tr>
+<tr>
+<td><strong>Recall</strong></td>
+<td>0.9743</td>
+<td>+0.11</td>
+</tr>
+<tr>
+<td><strong>F1 Score</strong></td>
+<td>0.9472</td>
+<td>+0.1162</td>
+</tr>
+<tr>
+<td><strong>AUC</strong></td>
+<td>0.9744</td>
+<td>+0.2114</td>
+</tr>
+</tbody>
+</table>
+<p>With this simple grid search, the model's performance has been significantly 
+improved. The metrics show the model's performance is now much better than the 
+baseline model. Even though there is still room for improvement, the extra boost in 
+performance that could be achieved with more advanced hyperparameter tuning techniques 
+and with feature engineering is not worth the extra time and complexity. It is good 
+to boost the performance, but it is also important to keep the model nice and simple. </p>
+<p>The next section will focus on explaining the model's predictions using SHAP. </p>
 
 
 
