@@ -25,4 +25,4 @@ the stages of a typical machine learning project:
 - Feature importance analysis with SHAP. 
 - Model deployment with FastAPI. 
 
-For more details, please refer to the [documentation](). 
+For more details, please refer to the [documentation](https://yb1ku.github.io/german-credit-risk/). 

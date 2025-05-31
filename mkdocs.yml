@@ -1,4 +1,5 @@
 site_name: Credit Risk Classification
+site_url: https://Yb1ku.github.io/german-credit-risk/
 theme:
   name: material
   palette:
