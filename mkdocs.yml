@@ -1,0 +1,38 @@
+site_name: Credit Risk Classification
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: teal
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: lime
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Dataset & EDA:
+      - Dataset overview: eda/dataset_overview.md
+      - Exploratory Data Analysis: eda/exploration.md
+  - Modeling:
+      - Baseline model: modeling/baseline_model.md
+      - Hyperparameter Tuning: modeling/hyperparameter_tuning.md
+  - Interpretability:
+      - SHAP summary: interpretation/shap_summary.md
+      - Insights: interpretation/insights.md
+  - Deployment:
+      - API Endpoint: deployment/api_endpoint.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - codehilite
+  - admonition
+  - footnotes
+  - tables
