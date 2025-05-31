@@ -1,4 +1,3 @@
-## BUILDING A BASELINE MODEL 
 
 This section explains how the baseline model was built. It is a simple XGBoost model
 with default hyperparameters. Even though it is not optimized, and hyperparameter 

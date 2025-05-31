@@ -1,4 +1,3 @@
-## HYPERPARAMETER TUNING 
 
 The previous section introduced a baseline model with default hyperparameters. Now, 
 the goal is to improve the model's performance by tuning its hyperparameters. This 
