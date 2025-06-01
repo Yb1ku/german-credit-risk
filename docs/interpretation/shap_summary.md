@@ -17,7 +17,7 @@ This plot can be used to extract some interesting insights about the model:
 
 - The most important features for the model are `Status_of_existing_checking_account`,
 `Duration_in_month`, `Purpose` and `Credit_amount`. This aligns with domain knowledge, 
-- as these variables are typically relevant in assessing creditworthiness. 
+as these variables are typically relevant in assessing creditworthiness. 
 
 - Higher values of `Duration_in_month` lead to a higher probability of the model 
 giving a bad credit rating, while the opposite happens when the value of this 

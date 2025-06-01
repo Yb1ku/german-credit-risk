@@ -4,8 +4,8 @@ The exploratory data analysis (EDA) is the first step in a machine learning proj
 as it helps to understand the data one is working with. As an attempt to simulate a
 real world scenario, the EDA has been performed with the dataset converted to a 
 SQL database. The EDA is performed using SQL queries to extract the data and matplotlib 
-to visualize it. For more details on the queries used please refer to the 
-[queries]() section. 
+to visualize it. For more details on the queries used, please refer to the 
+[queries](queries.md) section. 
 
 Here are the graphs generated during the EDA: 
 
