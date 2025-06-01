@@ -29,7 +29,7 @@ nav:
       - Interpretability analysis: interpretation/shap_summary.md
   - Deployment:
       - API Endpoint: deployment/api_endpoint.md
-  - Conclusions: conclusions.md
+  - Conclusions: conclusions/conclusions.md
 
 markdown_extensions:
   - toc:
