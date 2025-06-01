@@ -21,6 +21,7 @@ nav:
   - Dataset & EDA:
       - Dataset overview: eda/dataset_overview.md
       - Exploratory Data Analysis: eda/exploration.md
+      - Queries: eda/queries.md
   - Modeling:
       - Baseline model: modeling/baseline_model.md
       - Hyperparameter Tuning: modeling/hyperparameter_tuning.md
@@ -28,6 +29,7 @@ nav:
       - Interpretability analysis: interpretation/shap_summary.md
   - Deployment:
       - API Endpoint: deployment/api_endpoint.md
+  - Conclusions: conclusions.md
 
 markdown_extensions:
   - toc:
