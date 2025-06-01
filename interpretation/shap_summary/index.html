@@ -14,7 +14,7 @@
         <link rel="prev" href="../../modeling/hyperparameter_tuning/">
       
       
-        <link rel="next" href="../insights/">
+        <link rel="next" href="../../deployment/api_endpoint/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>SHAP summary - Credit Risk Classification</title>
+        <title>Interpretability analysis - Credit Risk Classification</title>
       
     
     
@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#understanding-shap-values" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -105,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SHAP summary
+              Interpretability analysis
             
           </span>
         </div>
@@ -478,41 +483,57 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Interpretability analysis
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    SHAP summary
+    Interpretability analysis
     
   </span>
   
 
       </a>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../insights/" class="md-nav__link">
         
-  
-  
-  <span class="md-ellipsis">
-    Insights
-    
-  </span>
-  
 
-      </a>
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-shap-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding SHAP values
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -611,6 +632,23 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-shap-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding SHAP values
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -625,9 +663,54 @@
 
 
 
-  <h1>SHAP summary</h1>
+  <h1>Interpretability analysis</h1>
 
-
+<p><a href="https://shap.readthedocs.io/en/latest/">SHAP</a> is a powerful tool for interpreting
+machine learning models, as it provides insights into how each feature contributes 
+to the predictions. This section contains the interpretability analysis of the 
+model trained in the previous section. </p>
+<h3 id="understanding-shap-values">Understanding SHAP values<a class="headerlink" href="#understanding-shap-values" title="Permanent link">&para;</a></h3>
+<p>The SHAP summary plot displays the impact each feature has on the model's 
+predictions. Each point represents a single prediction, and the color 
+indicates the feature value (red for high, blue for low). The x-axis shows 
+the SHAP value, that is, how much that feature contributed to pushing the 
+prediction towards a good or bad credit rating. </p>
+<p><img alt="" src="../../assets/shap_values.png" /></p>
+<p>This plot can be used to extract some interesting insights about the model: </p>
+<ul>
+<li>The most important features for the model are <code>Status_of_existing_checking_account</code>,
+<code>Duration_in_month</code>, <code>Purpose</code> and <code>Credit_amount</code>. This aligns with domain knowledge, </li>
+<li>
+<p>as these variables are typically relevant in assessing creditworthiness. </p>
+</li>
+<li>
+<p>Higher values of <code>Duration_in_month</code> lead to a higher probability of the model 
+giving a bad credit rating, while the opposite happens when the value of this 
+variable is low. This indicates that the model has learned a positive correlation 
+between credit duration and risk of default. </p>
+</li>
+<li>
+<p>While high amounts of credit can lead the model to give a bad credit rating, the 
+plot is not conclusive, as there is significant overlap between the SHAP values 
+for high and low credit amounts. This suggests that this variable alone is not a 
+strong predictor, and it may depend on interactions with other features. </p>
+</li>
+<li>
+<p>The <code>Age</code> feature shows a clear monotonic pattern, with higher ages leading to a 
+better credit rating, while lower ages lead to a worse credit rating. This may reflect 
+assumptions about financial stability and responsibility which tend to increase with age.</p>
+</li>
+<li>
+<p>Interestingly, beign a foreigner worker seems to contribute positively to the 
+credit rating outcome, even though further demographic investigation would be needed 
+to understand whether this reflects or not an actual pattern in the data. </p>
+</li>
+</ul>
+<p>Overall, the SHAP analysis reveals that the model relies on both financial and 
+demographic features to make its predictions. This interpretability analysis is essential
+in credit scoring models, where decisions can have significant impact on individuals' lives. 
+Ensuring that the model's behavior aligns with domain knowledge and ethical considerations
+helps build trust, detect potential biases and comply with regulatory expectations. </p>
 
 
 
