@@ -25,8 +25,7 @@ nav:
       - Baseline model: modeling/baseline_model.md
       - Hyperparameter Tuning: modeling/hyperparameter_tuning.md
   - Interpretability:
-      - SHAP summary: interpretation/shap_summary.md
-      - Insights: interpretation/insights.md
+      - Interpretability analysis: interpretation/shap_summary.md
   - Deployment:
       - API Endpoint: deployment/api_endpoint.md
 
